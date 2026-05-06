@@ -19,7 +19,7 @@ The official landing page for the **Void Economy System**. Designed with a high-
 ## 🔗 Links
 
 - **Invite Void:** [Authorize Here](https://discord.com/oauth2/authorize?client_id=1500201591754723548&permissions=1101927664656&integration_type=0&scope=bot%20applications.commands)
-- **Support Server:** [Join Abyss](https://discord.gg/xZaEN69MmY)
+- **Support Server:** [Join Here](https://discord.gg/xZaEN69MmY)
 
 ## 📜 Credits & Attribution
 
