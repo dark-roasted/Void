@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Void | Advanced Economy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] },
+                    colors: {
+                        void: {
+                            black: '#020202',
+                            dark: '#0a0a0c',
+                            cyan: '#00f2fe',
+                            purple: '#7000ff',
+                            pink: '#ff00e5'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'morph': 'morph 15s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-30px) rotate(1deg)' },
+                        },
+                        morph: {
+                            '0%, 100%': { borderRadius: '40% 60% 70% 30% / 40% 50% 60% 50%' },
+                            '33%': { borderRadius: '70% 30% 50% 50% / 30% 30% 70% 70%' },
+                            '66%': { borderRadius: '30% 60% 70% 40% / 50% 60% 30% 40%' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #020202; color: #ffffff; overflow-x: hidden; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glass-dark { background: rgba(5, 5, 5, 0.6); backdrop-filter: blur(40px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .mac-dots::before { content: ''; display: inline-block; width: 10px; height: 10px; border-radius: 50%; background-color: #ff5f56; box-shadow: 18px 0 0 #ffbd2e, 36px 0 0 #27c93f; margin-bottom: 25px; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #020202; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(#00f2fe, #7000ff); border-radius: 10px; }
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .blob { position: fixed; width: 700px; height: 700px; filter: blur(120px); z-index: -1; opacity: 0.25; pointer-events: none; }
+        .nav-link { position: relative; transition: all 0.4s ease; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -6px; left: 0; background: linear-gradient(to right, #00f2fe, #7000ff); transition: width 0.4s ease; }
+        .nav-link:hover::after { width: 100%; }
+        .gradient-text { background: linear-gradient(90deg, #00f2fe, #7000ff, #ff00e5, #00f2fe); background-size: 300% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: moveGradient 8s linear infinite; }
+        @keyframes moveGradient { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+        .hero-logo { filter: drop-shadow(0 0 50px rgba(0, 242, 254, 0.3)); }
+        .mobile-nav-active { color: #00f2fe !important; transform: translateY(-5px); }
+    </style>
+</head>
+<body class="antialiased selection:bg-void-cyan selection:text-black">
+
+    <div class="blob animate-morph bg-void-cyan" style="top: -200px; left: -200px;"></div>
+    <div class="blob animate-morph bg-void-purple" style="bottom: -200px; right: -200px; animation-delay: -5s;"></div>
+
+    <nav class="hidden lg:flex fixed top-8 left-1/2 -translate-x-1/2 z-[100] glass px-12 py-5 rounded-3xl items-center gap-16 transition-all duration-500 w-auto hover:px-20 hover:scale-[1.02]">
+        <a href="#home" class="flex items-center gap-4 group">
+            <img src="Logo.png" alt="Void" class="h-8 w-auto object-contain transition-transform group-hover:scale-110">
+            <span class="font-bold tracking-tighter text-2xl group-hover:text-void-cyan transition-colors">VOID</span>
+        </a>
+        <div class="flex gap-10 text-[12px] font-semibold tracking-[0.2em] uppercase text-gray-400">
+            <a href="#home" class="nav-link hover:text-white">Home</a>
+            <a href="#features" class="nav-link hover:text-white">Core</a>
+            <a href="#tos" class="nav-link hover:text-white">Terms</a>
+            <a href="#privacy" class="nav-link hover:text-white">Privacy</a>
+        </div>
+        <a href="https://discord.com/oauth2/authorize?client_id=1500201591754723548&permissions=1101927664656&integration_type=0&scope=bot%20applications.commands" class="bg-white text-black px-8 py-3 rounded-2xl font-bold text-xs hover:bg-void-cyan hover:shadow-[0_0_30px_rgba(0,242,254,0.5)] transition-all active:scale-95">INVITE BOT</a>
+    </nav>
+
+    <nav class="lg:hidden fixed bottom-8 left-8 right-8 z-[100] glass px-10 py-5 rounded-[2.5rem] flex justify-between items-center shadow-2xl">
+        <a href="#home" class="mobile-icon text-2xl text-gray-400"><i class="fa-solid fa-house"></i></a>
+        <a href="#features" class="mobile-icon text-2xl text-gray-400"><i class="fa-solid fa-shapes"></i></a>
+        <a href="https://discord.com/oauth2/authorize?client_id=1500201591754723548&permissions=1101927664656&integration_type=0&scope=bot%20applications.commands" class="w-16 h-16 -mt-16 bg-gradient-to-tr from-void-cyan to-void-purple rounded-full flex items-center justify-center text-white text-2xl shadow-[0_15px_40px_rgba(112,0,255,0.4)] border-8 border-void-black active:scale-90 transition-all"><i class="fa-brands fa-discord"></i></a>
+        <a href="#tos" class="mobile-icon text-2xl text-gray-400"><i class="fa-solid fa-shield-halved"></i></a>
+        <button onclick="toggleMobileSidebar()" class="text-2xl text-gray-400"><i class="fa-solid fa-bars-staggered"></i></button>
+    </nav>
+
+    <div id="mobile-sidebar" class="fixed inset-0 z-[110] translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-xl" onclick="toggleMobileSidebar()"></div>
+        <div class="absolute inset-y-0 right-0 w-[85%] bg-void-dark p-12 flex flex-col gap-10 shadow-2xl">
+            <div class="flex justify-between items-center">
+                <img src="Logo.png" alt="Void" class="h-10 w-auto">
+                <button onclick="toggleMobileSidebar()" class="text-4xl font-light text-gray-500">&times;</button>
+            </div>
+            <div class="flex flex-col gap-8 mt-16">
+                <a href="#home" onclick="toggleMobileSidebar()" class="text-5xl font-bold hover:text-void-cyan transition-all tracking-tighter">HOME</a>
+                <a href="#features" onclick="toggleMobileSidebar()" class="text-5xl font-bold hover:text-void-cyan transition-all tracking-tighter">FEATURES</a>
+                <a href="#tos" onclick="toggleMobileSidebar()" class="text-5xl font-bold hover:text-void-cyan transition-all tracking-tighter">TERMS</a>
+                <a href="#privacy" onclick="toggleMobileSidebar()" class="text-5xl font-bold hover:text-void-cyan transition-all tracking-tighter">PRIVACY</a>
+            </div>
+            <div class="mt-auto flex flex-col gap-4">
+                <a href="https://discord.gg/xZaEN69MmY" class="w-full text-center py-5 rounded-3xl bg-white/5 border border-white/10 font-bold text-gray-300">SUPPORT SERVER</a>
+                <a href="https://discord.com/oauth2/authorize?client_id=1500201591754723548&permissions=1101927664656&integration_type=0&scope=bot%20applications.commands" class="w-full text-center py-5 rounded-3xl bg-gradient-to-r from-void-cyan to-void-purple font-bold text-white">INVITE NOW</a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section id="home" class="min-h-screen flex flex-col items-center justify-center pt-32 px-8">
+            <div class="text-center relative z-10 w-full max-w-6xl">
+                <div class="inline-flex items-center gap-3 glass px-6 py-2.5 rounded-full text-[11px] font-bold tracking-[0.3em] uppercase text-void-cyan mb-12 reveal">
+                    <span class="relative flex h-2.5 w-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-void-cyan opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-void-cyan"></span>
+                    </span>
+                    System Version 2.0.4 Online
+                </div>
+                
+                <div class="flex justify-center mb-16 reveal">
+                    <div class="relative group">
+                        <div class="absolute -inset-8 bg-void-cyan/20 blur-[80px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                        <img src="Logo.png" alt="Void Logo" class="hero-logo w-full max-w-[600px] h-auto object-contain animate-float transition-transform duration-700 hover:scale-[1.02]">
+                    </div>
+                </div>
+
+                <h1 class="text-6xl md:text-[140px] font-bold leading-[0.85] tracking-tighter mb-12 reveal">
+                    BEYOND THE <br> <span class="gradient-text uppercase">Abyss.</span>
+                </h1>
+                
+                <p class="max-w-3xl mx-auto text-gray-400 text-lg md:text-2xl font-light leading-relaxed mb-16 reveal">
+                    The most powerful economy engine ever built for Discord communities. Fast, secure, and infinitely deep.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-8 justify-center items-center reveal">
+                    <a href="https://discord.com/oauth2/authorize?client_id=1500201591754723548&permissions=1101927664656&integration_type=0&scope=bot%20applications.commands" class="group relative px-14 py-6 bg-white text-black font-bold rounded-[2rem] overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_20px_50px_rgba(255,255,255,0.1)]">
+                        <div class="absolute inset-0 bg-void-cyan translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
+                        <span class="relative z-10 group-hover:text-black tracking-widest text-sm uppercase">Authorize Void</span>
+                    </a>
+                    <a href="https://discord.gg/xZaEN69MmY" class="glass px-14 py-6 rounded-[2rem] font-bold tracking-widest text-sm uppercase hover:bg-white/5 transition-all flex items-center gap-3">
+                        <i class="fa-brands fa-discord text-xl"></i> Support
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="py-40 px-8 bg-gradient-to-b from-transparent via-void-dark/50 to-transparent">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                    <div class="reveal">
+                        <h2 class="text-5xl md:text-8xl font-bold tracking-tighter mb-10 italic">CORE <span class="text-void-purple">ENGINE.</span></h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="glass p-10 rounded-[2.5rem] border-white/5 hover:bg-white/5 transition-all group">
+                                <div class="w-16 h-16 rounded-2xl bg-void-cyan/10 flex items-center justify-center text-void-cyan text-3xl mb-6 group-hover:scale-110 transition-transform"><i class="fa-solid fa-microchip"></i></div>
+                                <h3 class="text-2xl font-bold mb-3">Quantum API</h3>
+                                <p class="text-gray-500 text-sm leading-relaxed">Lightning fast responses under 20ms for every command executed.</p>
+                            </div>
+                            <div class="glass p-10 rounded-[2.5rem] border-white/5 hover:bg-white/5 transition-all group">
+                                <div class="w-16 h-16 rounded-2xl bg-void-purple/10 flex items-center justify-center text-void-purple text-3xl mb-6 group-hover:scale-110 transition-transform"><i class="fa-solid fa-fingerprint"></i></div>
+                                <h3 class="text-2xl font-bold mb-3">Void ID</h3>
+                                <p class="text-gray-500 text-sm leading-relaxed">Unique global tracking for cross-server trade and reputation.</p>
+                            </div>
+                            <div class="glass p-10 rounded-[2.5rem] border-white/5 hover:bg-white/5 transition-all group">
+                                <div class="w-16 h-16 rounded-2xl bg-void-pink/10 flex items-center justify-center text-void-pink text-3xl mb-6 group-hover:scale-110 transition-transform"><i class="fa-solid fa-infinity"></i></div>
+                                <h3 class="text-2xl font-bold mb-3">Endless Scale</h3>
+                                <p class="text-gray-500 text-sm leading-relaxed">Handles millions of transactions with 99.9% database uptime.</p>
+                            </div>
+                            <div class="glass p-10 rounded-[2.5rem] border-white/5 hover:bg-white/5 transition-all group">
+                                <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center text-white text-3xl mb-6 group-hover:scale-110 transition-transform"><i class="fa-solid fa-ghost"></i></div>
+                                <h3 class="text-2xl font-bold mb-3">Ghost Mode</h3>
+                                <p class="text-gray-500 text-sm leading-relaxed">Anonymous banking options for high-tier syndicate members.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tos" class="py-40 px-8">
+            <div class="max-w-5xl mx-auto reveal">
+                <div class="glass-dark p-12 md:p-24 rounded-[4rem] border border-white/5 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-void-purple/10 blur-[100px]"></div>
+                    <div class="mac-dots"></div>
+                    <h2 class="text-6xl md:text-8xl font-bold tracking-tighter mb-16 uppercase">Terms <br><span class="text-void-cyan">Of Service</span></h2>
+                    <div class="space-y-16 text-gray-400 text-lg md:text-xl font-light">
+                        <div class="flex flex-col md:flex-row gap-8 items-start group">
+                            <span class="text-5xl font-black text-white/5 group-hover:text-void-cyan transition-colors">01</span>
+                            <div>
+                                <h4 class="text-white font-bold text-2xl mb-4">Core Agreement</h4>
+                                <p class="leading-relaxed">By adding Void to your server, you accept that virtual items and balances carry no real-world value. We are not responsible for any internal server disputes regarding economy transactions.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-8 items-start group">
+                            <span class="text-5xl font-black text-white/5 group-hover:text-void-cyan transition-colors">02</span>
+                            <div>
+                                <h4 class="text-white font-bold text-2xl mb-4">Forbidden Operations</h4>
+                                <p class="leading-relaxed">Reverse engineering, DDoS attempts, or exploiting currency bugs will result in an immediate global hardware ID ban. Self-botting for daily rewards is strictly prohibited.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-8 items-start group">
+                            <span class="text-5xl font-black text-white/5 group-hover:text-void-cyan transition-colors">03</span>
+                            <div>
+                                <h4 class="text-white font-bold text-2xl mb-4">Data Persistence</h4>
+                                <p class="leading-relaxed">We reserve the right to reset specific guild economies during massive balancing updates. We typically provide a 72-hour notice before any destructive database changes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="privacy" class="py-40 px-8">
+            <div class="max-w-5xl mx-auto reveal">
+                <div class="glass-dark p-12 md:p-24 rounded-[4rem] border border-white/5 relative overflow-hidden">
+                    <div class="absolute bottom-0 left-0 w-64 h-64 bg-void-cyan/10 blur-[100px]"></div>
+                    <div class="mac-dots"></div>
+                    <h2 class="text-6xl md:text-8xl font-bold tracking-tighter mb-16 uppercase">Privacy <br><span class="text-void-purple">Protocol</span></h2>
+                    <div class="space-y-16 text-gray-400 text-lg md:text-xl font-light">
+                        <div class="flex flex-col md:flex-row gap-8 items-start group">
+                            <div class="w-2 h-24 bg-void-purple rounded-full opacity-20 group-hover:opacity-100 transition-opacity"></div>
+                            <div>
+                                <h4 class="text-white font-bold text-2xl mb-4">Encryption First</h4>
+                                <p class="leading-relaxed">We do not store your Discord messages. We only track numerical values associated with your User ID (balances, inventory levels, and cooldown timestamps).</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-8 items-start group">
+                            <div class="w-2 h-24 bg-void-cyan rounded-full opacity-20 group-hover:opacity-100 transition-opacity"></div>
+                            <div>
+                                <h4 class="text-white font-bold text-2xl mb-4">Zero Third Parties</h4>
+                                <p class="leading-relaxed">Your transaction history and profile metadata are never sold or shared. All data lives on our private, isolated MongoDB clusters with high-grade firewalls.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-8 items-start group">
+                            <div class="w-2 h-24 bg-white rounded-full opacity-20 group-hover:opacity-100 transition-opacity"></div>
+                            <div>
+                                <h4 class="text-white font-bold text-2xl mb-4">The Right to Forget</h4>
+                                <p class="leading-relaxed">You can purge your entire economic footprint instantly. Join our support server and use the data-wipe request system to clear all entries permanently.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-32 border-t border-white/5 text-center relative overflow-hidden">
+        <div class="mb-12 flex justify-center gap-10 text-3xl text-gray-600">
+            <a href="https://discord.gg/xZaEN69MmY" class="hover:text-void-cyan transition-all hover:scale-125"><i class="fa-brands fa-discord"></i></a>
+            <a href="#" class="hover:text-void-pink transition-all hover:scale-125"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+        <img src="Logo.png" alt="Void Logo" class="h-10 mx-auto opacity-20 mb-8">
+        <p class="text-sm font-bold tracking-[0.5em] uppercase text-gray-500 mb-4 italic">The Void is Watching</p>
+        <p class="text-[10px] text-gray-700 tracking-widest">&copy; 2026 VOID UNDERWORLD. HANDCRAFTED FOR PRESTIGE.</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        function toggleMobileSidebar() {
+            document.getElementById('mobile-sidebar').classList.toggle('translate-x-full');
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('glass-dark');
+                nav.style.paddingTop = '1.25rem';
+                nav.style.paddingBottom = '1.25rem';
+            } else {
+                nav.classList.remove('glass-dark');
+                nav.style.paddingTop = '1.5rem';
+                nav.style.paddingBottom = '1.5rem';
+            }
+
+            const sections = document.querySelectorAll('section');
+            const mobileIcons = document.querySelectorAll('.mobile-icon');
+            sections.forEach((section, i) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 150 && rect.bottom >= 150) {
+                    mobileIcons.forEach(icon => icon.classList.remove('mobile-nav-active'));
+                    if (mobileIcons[i]) mobileIcons[i].classList.add('mobile-nav-active');
+                }
+            });
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) - 0.5;
+            const y = (e.clientY / window.innerHeight) - 0.5;
+            document.querySelectorAll('.blob').forEach((blob, index) => {
+                const factor = (index + 1) * 30;
+                blob.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
