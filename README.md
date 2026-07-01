@@ -32,4 +32,4 @@ This project uses assets from the following providers:
 
 ## ⚖️ License
 
-The code for this website is private and intended only for the **Void/Barada** ecosystem. Unauthorized redistribution is prohibited.
+The code for this website is private and intended only for the **Void** ecosystem. Unauthorized redistribution is prohibited.
