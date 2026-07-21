@@ -179,8 +179,8 @@ function buildMarketEmbed(stocks, category = 'welcome', isThread = false) {
         .setFooter({ text: 'Powered by Live Market Data', iconURL: 'https://cdn.discordapp.com/emojis/1518864687616364695.webp' });
 
     if (!isThread) {
-        embed.setAuthor({ name: 'ATHENA GLOBAL EXCHANGE', iconURL: 'https://cdn.discordapp.com/emojis/1519183839866523718.webp' })
-        embed.setDescription(`> Welcome to the official Athena Exchange.\n> Real-time global market data connected. Select a category below to open your secure trading terminal.`);
+        embed.setAuthor({ name: 'Luna GLOBAL EXCHANGE', iconURL: 'https://cdn.discordapp.com/emojis/1519183839866523718.webp' })
+        embed.setDescription(`> Welcome to the official Luna Exchange.\n> Real-time global market data connected. Select a category below to open your secure trading terminal.`);
         return embed;
     }
 
@@ -357,7 +357,7 @@ async function handleMarketInteraction(interaction) {
                 { name: '📂 Open Positions', value: desc, inline: false }
             )
             .setColor('#121212')
-            .setFooter({ text: 'Athena Global Exchange' });
+            .setFooter({ text: 'Luna Global Exchange' });
 
         return interaction.reply({ embeds: [pEmbed], flags: MessageFlags.Ephemeral });
     }
@@ -450,7 +450,7 @@ async function handleMarketInteraction(interaction) {
             const stock = stocksData.find(s => s.symbol === symInputRaw || s.displayTicker.toUpperCase() === symInputRaw);
             
             if (!stock) {
-                return mSubmit.reply({ embeds: [createReceipt(`${emojis.alert} Invalid Symbol`, `The ticker \`${symInputRaw}\` does not exist on the Athena Exchange.`, '#E74C3C')], flags: MessageFlags.Ephemeral });
+                return mSubmit.reply({ embeds: [createReceipt(`${emojis.alert} Invalid Symbol`, `The ticker \`${symInputRaw}\` does not exist on the Luna Exchange.`, '#E74C3C')], flags: MessageFlags.Ephemeral });
             }
 
             if (!['BTC-USD', 'ETH-USD', 'SOL-USD'].includes(stock.symbol)) {
@@ -529,7 +529,7 @@ async function handleMarketInteraction(interaction) {
                 
                 if (newTotalShares === 0) {
                     latestData.portfolioAvgPrice.set(sym, 0);
-                }
+                }sss
             }
 
             await latestData.save();
@@ -544,7 +544,7 @@ async function handleMarketInteraction(interaction) {
                 )
                 .setColor(isBuy ? '#3498DB' : '#E67E22')
                 .setTimestamp()
-                .setFooter({ text: 'Athena Global Exchange • Transaction ID: ' + Math.random().toString(36).substring(2, 10).toUpperCase() });
+                .setFooter({ text: 'Luna Global Exchange • Transaction ID: ' + Math.random().toString(36).substring(2, 10).toUpperCase() });
 
             await mSubmit.reply({ embeds: [finalReceipt], flags: MessageFlags.Ephemeral });
 
