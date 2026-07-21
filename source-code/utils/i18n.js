@@ -2,7 +2,7 @@ const emojis = require('./emojis');
 
 const translations = {
     en: {
-        notInGuild: 'This bot is exclusive to the **ATHENA** server.',
+        notInGuild: 'This bot is exclusive to the **Luna** server.',
         wallet: 'Wallet',
         bank: 'Bank',
         voidBank: 'Void Bank (Staked)',
@@ -23,7 +23,7 @@ const translations = {
         insufficientFunds: 'You do not have enough funds for this transaction.',
         transSuccess: 'Transaction successful.',
         newBalance: 'New Balance',
-        marketTitle: 'Athena Stock Market',
+        marketTitle: 'Luna Stock Market',
         marketDesc: 'The market updates automatically. Volatility is high. Invest at your own risk.',
         marketBuy: 'Buy Stocks',
         marketSell: 'Sell Stocks',
@@ -31,7 +31,7 @@ const translations = {
         marketTransOut: 'Withdraw to Main Wallet',
         stockSymbol: 'Stock Symbol (e.g. AAPL)',
         portfolioEmpty: 'Your portfolio is empty.',
-        helpTitle: 'Athena Systems',
+        helpTitle: 'Luna Systems',
         helpDesc: 'Here is the list of available commands and modules.',
         leaderboardTitle: 'Wealth Leaderboard',
         coinflipSpin: 'Flipping the coin...',
