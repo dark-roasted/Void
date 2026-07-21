@@ -6,7 +6,7 @@ const emojis = require('../../utils/emojis');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('setup-market')
-        .setDescription('Sets up the live Athena Stock Market terminal.')
+        .setDescription('Sets up the live Luna Stock Market terminal.')
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
     async execute(interaction) {
         await interaction.deferReply({ flags: MessageFlags.Ephemeral });
