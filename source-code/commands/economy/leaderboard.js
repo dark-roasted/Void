@@ -7,7 +7,7 @@ const emojis = require('../../utils/emojis');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('leaderboard')
-        .setDescription('View the wealthiest users in Athena.'),
+        .setDescription('View the wealthiest users in Luna.'),
     async execute(interaction) {
         let executorData = await User.findOne({ userId: interaction.user.id });
         const lang = executorData ? executorData.language : 'en';
