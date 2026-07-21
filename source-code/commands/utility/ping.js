@@ -3,7 +3,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('ping')
-        .setDescription('Replies with Athena network and database latency.'),
+        .setDescription('Replies with Luna network and database latency.'),
     async execute(interaction) {
         const sent = await interaction.reply({ content: 'Pinging global network...', fetchReply: true });
         
@@ -11,7 +11,7 @@ module.exports = {
         const apiLatency = Math.round(interaction.client.ws.ping);
 
         const embed = new EmbedBuilder()
-            .setAuthor({ name: 'Athena Network Status', iconURL: interaction.client.user.displayAvatarURL() })
+            .setAuthor({ name: 'Luna Network Status', iconURL: interaction.client.user.displayAvatarURL() })
             .addFields(
                 { name: '📡 Gateway Latency', value: `\`${latency}ms\``, inline: true },
                 { name: '🔌 API Latency', value: `\`${apiLatency}ms\``, inline: true }
