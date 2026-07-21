@@ -38,22 +38,22 @@ for (const folder of commandFolders) {
 
 client.once(Events.ClientReady, async () => {
     try {
-        console.log(`Bot aktif edildi: ${client.user.tag}`);
+        console.log(`Void Bot is online : ${client.user.tag}`);
         
         await mongoose.connect(process.env.MONGO_URI);
-        console.log('MongoDB Atlas baglantisi basarili!');
+        console.log('MongoDB Atlas connected!');
 
-        if (!process.env.ATHENA_GUILD_ID) {
-            console.error("ERROR: ATHENA_GUILD_ID environment variable is not set.");
+        if (!process.env.LUNA_GUILD_ID) {
+            console.error("ERROR: LUNA_GUILD_ID environment variable is not set.");
             process.exit(1);
         }
         
         const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
         await rest.put(
-            Routes.applicationGuildCommands(client.user.id, process.env.ATHENA_GUILD_ID),
+            Routes.applicationGuildCommands(client.user.id, process.env.LUNA_GUILD_ID),
             { body: commands }
         );
-        console.log('Slash komutlari yuklendi!');
+        console.log('Slash commands updated!');
 
         initMarket(client);
 
@@ -75,7 +75,7 @@ client.on(Events.InteractionCreate, async interaction => {
         userData = await User.create({ userId: interaction.user.id });
     }
 
-    if (interaction.guildId !== process.env.ATHENA_GUILD_ID) {
+    if (interaction.guildId !== process.env.LUNA_GUILD_ID) {
         const errorMsg = t(userData.language, 'notInGuild');
         return interaction.reply({ content: errorMsg, flags: 64 });
     }
@@ -92,5 +92,5 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 client.login(process.env.TOKEN).catch(error => {
-    console.error('ERROR: Discord API giris hatasi:', error);
+    console.error('ERROR: Discord API login error :', error);
 });
