@@ -2,13 +2,6 @@
 
 The official landing page for the **Void Economy System**. Designed with a high-end, macOS-inspired aesthetic, featuring glassmorphism, fluid animations, and a mobile-first responsive architecture.
 
-## 🚀 Features
-
-- **Fluid Navigation:** Smooth scrolling and interactive elements using Tailwind CSS.
-- **Modern UI/UX:** Sophisticated dark mode with neon accents and glassmorphism.
-- **Optimized for Mobile:** Custom bottom-bar navigation for a seamless handheld experience.
-- **Zero-Comment Codebase:** Stripped of all comments for maximum performance and cleanliness.
-
 ## 🛠️ Tech Stack
 
 - **HTML5 / CSS3**
