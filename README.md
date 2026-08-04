@@ -1,17 +1,8 @@
 # 🌑 VOID | Official Web Portal
 
-The official landing page for the **Void Economy System**. Designed with a high-end, macOS-inspired aesthetic, featuring glassmorphism, fluid animations, and a mobile-first responsive architecture.
-
-## 🛠️ Tech Stack
-
-- **HTML5 / CSS3**
-- **Tailwind CSS** (CDN Implementation)
-- **FontAwesome** (Iconography)
-- **Intersection Observer API** (Scroll animations)
-
 ## 🔗 Links
 
-- **Try Void:** [Authorize Here](https://discord.gg/N4H5j3yWdU)
+- **Try Void:** [Join Luna](https://discord.gg/N4H5j3yWdU)
 
 ## 📜 Credits & Attribution
 
